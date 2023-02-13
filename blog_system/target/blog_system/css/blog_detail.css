@@ -1,0 +1,22 @@
+/* 博客详情页的专门样式 详情内容部分*/
+
+.blog_detail h3 {
+    font-size: 20px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.blog_detail .date {
+    color: rgb(0,128,0);
+    text-align: center;
+    padding: 10px 0;
+}
+
+.blog_detail #content {
+    text-indent: 2em;
+    word-wrap: break-word;
+    /* 在任意字符处断行 */
+    word-break: break-all;
+    /* 内容超出盒子不提供滚动条 */
+    overflow: hidden;
+}

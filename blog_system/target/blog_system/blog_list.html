@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客列表页</title>
+
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/blog_list.css">
+</head>
+<body>
+    <div class="nav">
+        <!-- 对于导航栏,多个页面都是要用的,所以把样式写道单独的css文件中 -->
+        <img src="img/logo.png" alt="">
+        <span class="title">我的博客系统</span>
+        <!-- spacer的作用只是为了把后面的a标签撑到右侧去 -->
+        <div class="spacer"></div>
+        <a href="blog_list.html">主页</a>
+        <a href="blog_edit.html">写博客</a>
+        <a href="logout">注销</a>
+    </div>
+
+    <!-- 表示主页面的版心区域 -->
+    <div class="container">
+        <!-- 左侧用户信息区域 -->
+        <div class="container_left">
+            <!-- 用这个元素表示用户信息 -->
+            <div class="card">
+                <!-- 用户头像 -->
+                <img src="img/touxiang.jpg" alt="">
+                <!-- 用户名字 -->
+                <h3></h3>
+                <!-- gitee地址 -->
+                <a href=https://github.com/1477649017>github地址</a>
+                <div class="counter">
+                    <span>文章</span>
+                </div>
+                <div class="counter">
+                    <span class="articleNum"></span>
+                </div>
+            </div>
+        </div>
+        <!-- 右侧内容区域 -->
+        <div class="container_right">
+            <!-- 每一个blog代表一篇博客 -->
+            <!-- 转义字符 &gt >  &lt < -->
+<!--            <div class="blog">-->
+<!--                <div class="title">我的第一篇博客</div>-->
+<!--                <div class="date">2022-11-07</div>-->
+<!--                <div class="desc">-->
+<!--                    从今天开始要好好写博客，刷题 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, veritatis placeat qui beatae odit voluptatum eaque at sequi eveniet! Molestias enim ut distinctio nesciunt minima rerum harum quas, quibusdam debitis.-->
+<!--                </div>-->
+<!--                <a href="blog_detail.html">查看全文 &gt;&gt;</a>-->
+<!--            </div>-->
+
+            <!-- 原来在博客列表这里的内容都是写死的，接入后端之后要开始请求数据了 -->
+        </div>
+    </div>
+
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+            // 直接写在scritp中的内容是页面刷新就加载的
+        function getBlogs() {
+            $.ajax({
+                type : 'get',
+                url : 'blog',
+                success : function(body){
+                    //body中包含着请求的结果 也就是博客列表
+                    //开始构造元素
+                    let containerRight = document.querySelector(".container_right");
+                    for(let blog of body){
+                        //相当于java的foreach
+                        //构造blogDiv
+                        let blogDiv = document.createElement('div');
+                        blogDiv.className = 'blog';
+                        //构造博客标题
+                        let titleDiv = document.createElement('div');
+                        titleDiv.className = 'title';
+                        titleDiv.innerHTML = blog.title;
+                        //构造博客发布时间
+                        let timeDiv = document.createElement('div');
+                        timeDiv.className = 'date';
+                        timeDiv.innerHTML = blog.postTime;
+                        //构造博客摘要
+                        let contentDiv = document.createElement('div');
+                        contentDiv.className = 'desc';
+                        contentDiv.innerHTML = blog.content;
+                        //构造a标签
+                        let a = document.createElement('a');
+                        //跳转到指定的博客详情 所以要加上参数
+                        a.href = "blog_detail.html?blogId=" + blog.blogId;
+                        a.innerHTML = "查看全文 &gt;&gt"
+
+                        //拼装最后结果
+                        blogDiv.appendChild(titleDiv);
+                        blogDiv.appendChild(timeDiv);
+                        blogDiv.appendChild(contentDiv);
+                        blogDiv.appendChild(a);
+
+                        containerRight.appendChild(blogDiv);
+                    }
+                }
+
+            })
+        }
+
+
+        function getUserInfo(){
+            $.ajax({
+                type : 'get',
+                url : 'userInfo',
+                success : function(body){
+                    //body就是一个用户信息
+                    let h3 = document.querySelector(".card>h3");
+                    h3.innerHTML = body.username;
+                }
+            })
+        }
+
+        function getArticleNum(){
+            $.ajax({
+                type : 'get',
+                url : 'articleNum',
+                success : function(data){
+                    let span = document.querySelector(".card .counter .articleNum")
+                    span.innerHTML = data.count;
+                }
+            })
+        }
+
+        getBlogs();
+        getLoginStatus();
+        getUserInfo();
+        getArticleNum();
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+/* 这个专门放博客列表内容的样式 */
+.blog {
+    border-bottom: 1px solid #f0f0f2;
+}
+
+.blog .title {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.blog .date {
+    text-align: center;
+    color: rgb(0,128, 0);
+    padding: 10px 0;
+}
+
+.blog .desc {
+    text-indent: 2em;
+    /* 首行缩进 */
+    word-wrap: break-word;
+    /* 在任意字符处断行 */
+    word-break: break-all;
+    /* 内容超出盒子不提供滚动条 */
+    overflow: hidden;
+}
+
+.blog a {
+    /* 首先把a标签转成一个块级元素才能设置大小 */
+    display: block;
+    width: 120px;
+    height: 40px;
+    /* margin是用来设置元素居中的 auto设置水平居中 */
+    margin: 10px auto;
+    /* 设置文字水平居中 */
+    text-align: center;
+    /* 设置文字竖直居中，行高等于元素高度 */
+    line-height: 40px;
+    text-decoration: none;
+    color: black;
+    /* 加上边框 */
+    border: 2px solid black;
+
+    /* 加上一个背景渐变的效果 */
+    transition: all 1s;
+}
+
+.blog a:hover {
+    /* 让鼠标悬停的时候有个效果 */
+    background-color: black;
+    color: white;
+}

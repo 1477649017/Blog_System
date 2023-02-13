@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客系统登录页</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/login.css">
+    
+</head>
+<body>
+    <!-- 创建封装容器 -->
+    <div class="container" id="container">
+        <!-- 注册页面 -->
+        <div class="form-container sign-up-container">
+            <form action="register" method="post" class="form1">
+                <h1>注册</h1>
+                <!-- 公共组件 -->
+                <!-- <div class="social-container">
+                    <a href="#"><i class="fab fa-qq"></i></a>
+                    <a href="#"><i class="fab fa-weixin"></i></a>
+                </div> -->
+                <input type="text" name="username" id="username" placeholder="用户名 限制最长6位">
+                <input type="password" name="password" id="password" placeholder="密码 限制6~10位">
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="确认密码">
+                <input type="submit" value="注册" id="button">
+            </form>
+        </div>
+
+        <!-- 登录页面 -->
+        <div class="form-container sign-in-container">
+            <form action="login" method="post" class="form2">
+                <h1>登录</h1>
+                <input type="text" name="username" id="username" placeholder="用户名" >
+                <input type="password" name="password" id="password" placeholder="密码">
+                <input type="submit" value="登录" id="button">
+            </form>
+        </div>
+
+        <!-- 覆盖容器 -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <!-- 覆盖左边 -->
+                <div class="overlay-penal overlay-left-container">
+                    <h1>welcome back!</h1>
+                    <button class="ghost" id="signIn" >登录</button>
+                </div>
+                <!-- 覆盖右边 -->
+                <div class="overlay-penal overlay-right-container">
+                    <h1>Hello Friend!</h1>
+                    <button class="ghost" id="signUp" >注册</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

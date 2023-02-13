@@ -1,0 +1,145 @@
+/* 这个里面放的都是一些公共的样式 */
+
+
+/* 导航栏样式 */
+
+* {
+    /* 通配选择器，去除浏览器的默认样式 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* 内外边距都设为0,并且保证边框啥的不会撑大盒子 */
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    /* 注意这里的相对路径要先跳出css目录 */
+    background-image: url(../img/moutain.jpg);
+    /* 不要背景图平铺 */
+    background-repeat: no-repeat;
+    /* 让背尽可能地方法 */
+    background-size: cover;
+    /* body宽度默认和浏览器一样宽，但是高度不是，所以这里要设置一下高度 */
+    height: 100%;
+    /* 和html一样高 */
+    /* 设置图片位置 */
+    background-position: center center;
+}
+
+.nav {
+    /* 导航栏的高度普遍都是50px */
+    height: 50px;
+    background-color: rgba(0, 0, 0,0.4);
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* 设置图标 */
+.nav img {
+    height: 40px;
+    width: 40px;
+    /* 设置一下外边距 */
+    margin-left: 30px;
+    margin-right: 10px;
+    border-radius: 20px;
+}
+
+
+.nav .spacer {
+    width: 65%;
+}
+
+.nav a {
+    /* 去掉下划线 */
+    text-decoration: none;
+    color:white;
+    /* 把几个a标签分开，这里使用内外边距都可以做到 */
+    padding: 0 10px;
+}
+
+.nav a:hover {
+    font-size: large;
+}
+
+/* 设置整个页面的背景图 */
+
+
+
+
+
+/* 版心样式 */
+.container {
+    width: 1000px;
+    /* 高度设置就是填充好除导航栏剩下的区域，也就是100% - 50px */
+    /* 不过减号为了区分开脊柱命名，所以一定左右使用空格 */
+    height: calc(100% - 50px);
+    /* 上面紧挨着导航栏,水平方向居中 */
+    margin: 5px auto;
+    /* 为了left,right能够水平方向上排列,要使用弹性布局 */
+    display: flex;
+    justify-content: space-between;
+}
+
+.container .container_left {
+    width: 200px;
+    height: 100%;
+}
+
+
+/* left区域样式 */
+.card {
+    background-color: rgba(255,255,255,1);
+    /* 让头像和文字不要顶着边界 */
+    padding: 30px;
+    border-radius: 5px;
+}
+
+
+/* right区域布局 */
+.container .container_right {
+    width: 796px;
+    height: 100%;
+    background-color: rgba(255,255,255,1);
+    border-radius: 5px;
+    padding: 20px;
+    /* 如果博客内容太多超出页面范围，自动添加滚动条 */
+    overflow: auto;
+    /* 不要让滚动条出现在浏览器页面的右边，那样会把整个页面撑大 */
+    /* 一个页面的高度也是固定的 */
+}
+
+.card img {
+    /*设置下头像的样式 */
+    width: 140px;
+    height: 140px;
+    border-radius: 70px;
+}
+
+.card h3 {
+    text-align: center;
+    padding: 10px;
+}
+
+.card a {
+    /* a标签是行内元素,所以默认大小就是里面的内容的大小 */
+    /* 所以为了方便进行设置,要将其转成块级元素 */
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: #999;
+    padding: 10px 0;
+    /* 上下10px 左右0 */
+}
+
+.card .counter {
+    /* 让里面的span可以横向弹性布局 */
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+}
+

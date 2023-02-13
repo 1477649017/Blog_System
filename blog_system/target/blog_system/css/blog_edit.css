@@ -1,0 +1,46 @@
+/* 针对博客编辑页的样式 */
+.blog_edit-container {
+    width: 90%;
+    height: calc(100% - 50px);
+    margin: 15px auto;
+}
+
+.blog_edit-container .title {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 针对输入框进行调整 */
+#blog-title {
+    height: 40px;
+    width:90%;
+    font-size: 20px;
+    padding-left: 10px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.8);
+}
+
+#submit {
+    height: 40px;
+    width: 8%;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: orange;
+    font-size: 15px;
+}
+
+#submit:active {
+    background-color: gray;
+}
+
+#editor {
+    border-radius: 10px;
+    opacity: 90%;
+    /* 这是设置半透明要使用opacity,因为editor里面的编辑器有很多子元素
+    所以，你使用rgba只能设置它本身半透明，但是里面的子元素无法半透明 */
+}
